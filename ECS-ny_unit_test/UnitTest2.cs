@@ -112,7 +112,7 @@ namespace ECS_ny_unit_test
         [TestCase(20,30,true)]
         [TestCase(30, 20, false)]
         [TestCase(30, 30, false)]
-        public void Regulate_Regulate30Temp20_HeaterIsOn(int a,int b, int c)
+        public void Regulate_Regulate30Temp20_HeaterIsOn(int a,int b, bool c)
         {
             sensor.FakeTemperature = a;
             uut.SetThreshold(b);
