@@ -3,46 +3,8 @@ using NUnit.Framework;
 
 namespace ECS_ny_unit_test
 {
-    public class Tests
+    public partial class Tests
     {
-        public class FakeSensor : ITempSensor
-        {
-            public int FakeTemperature {  set; get; }
-
-            public int GetTemp()
-            {
-                return FakeTemperature;
-            }
-
-            public bool RunSelfTest()
-            {
-                if (FakeTemperature == 0) return false;
-                else return true;
-            }
-
-        }
-
-        public class FakeHeater : IHeater
-        {
-            public bool State { set; get; }
-
-            public void TurnOn()
-            {
-                State = true;
-            }
-
-            public void TurnOff()
-            {
-                State = false;
-            }
-
-            public bool RunSelfTest()
-            {
-                return State;
-            }
-        }
-
-
         private ECS uut;
         private FakeSensor sensor;
         private FakeHeater heater;
