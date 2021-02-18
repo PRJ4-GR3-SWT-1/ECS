@@ -16,7 +16,8 @@ namespace ECS_ny_unit_test
 
             public bool RunSelfTest()
             {
-                return true;
+                if (FakeTemperature == 0) return false;
+                else return true;
             }
 
         }
@@ -54,14 +55,59 @@ namespace ECS_ny_unit_test
             uut = new ECS(20, sensor, heater);
         }
 
-        [TestCase(0)]
+        [TestCase(0),Description("TestNul")]
         [TestCase(20)]
         [TestCase(-5)]
-        public void GetCurTemp_TempIs_ResultMatches(int a)
+        public void GetCurTemp_TempIsInt_ResultMatches(int a)
         {
             
             sensor.FakeTemperature = a;
             Assert.That(uut.GetCurTemp(), Is.EqualTo(a));
         }
+
+        //Test Run self test
+        [Test]
+        public void RunSelfTest_HeaterFalseSensorTrue_ResultFalse()
+        {
+            heater.State = true;
+            sensor.FakeTemperature = 0;
+            Assert.That(uut.RunSelfTest, Is.False);
+        }
+
+        [Test]
+        public void RunSelfTest_HeaterFalseSensorFalse_ResultFalse()
+        {
+            heater.State = false;
+            sensor.FakeTemperature = 0;
+            Assert.That(uut.RunSelfTest, Is.False);
+        }
+
+        [Test]
+        public void RunSelfTest_HeaterTrueSensorTrue_ResultTrue()
+        {
+            heater.State = true;
+            sensor.FakeTemperature = 1;
+            Assert.That(uut.RunSelfTest, Is.True);
+        }
+
+        [Test]
+        public void RunSelfTest_HeaterTrueSensorFalse_ResultFalse()
+        {
+            heater.State = true;
+            sensor.FakeTemperature = 0;
+            Assert.That(uut.RunSelfTest, Is.False);
+        }
+
+        //Test set threshold
+        [TestCase(20)]
+        [TestCase(30)]
+        [TestCase(50000)]
+        public void SetThreshold_Set20_ResultTrue(int a)
+        {
+            uut.SetThreshold(a);
+            Assert.That(uut.GetThreshold(), Is.EqualTo(a));
+        }
+
+        // Test Regulate
     }
 }
