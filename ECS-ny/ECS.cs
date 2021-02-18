@@ -1,4 +1,4 @@
-﻿namespace ECS.Legacy
+﻿namespace ECS_ny
 {
     public class ECS
     {

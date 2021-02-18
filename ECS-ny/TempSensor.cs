@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace ECS.Legacy
+namespace ECS_ny
 {
     public interface ITempSensor
     {
         int GetTemp();
         bool RunSelfTest();
     }
-    internal class TempSensor : ITempSensor
+    public class TempSensor : ITempSensor
     {
         private Random gen = new Random();
 
