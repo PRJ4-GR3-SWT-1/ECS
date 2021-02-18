@@ -108,6 +108,19 @@ namespace ECS_ny_unit_test
             Assert.That(uut.GetThreshold(), Is.EqualTo(a));
         }
 
-        // Test Regulate
+        //Test Regulate
+        [TestCase(20,30,true)]
+        [TestCase(30, 20, false)]
+        [TestCase(30, 30, false)]
+        public void Regulate_Regulate30Temp20_HeaterIsOn(int a,int b, int c)
+        {
+            sensor.FakeTemperature = a;
+            uut.SetThreshold(b);
+            uut.Regulate();
+            Assert.That(heater.State, Is.EqualTo(c));
+        }
+
+
+
     }
 }
