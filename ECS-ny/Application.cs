@@ -2,9 +2,11 @@
 {
     public class Application
     {
-        public static void Main(string[] args)
+        public static void Main(/*string[] args*/)
         {
-            var ecs = new ECS(28);
+            var sensor = new TempSensor();
+            var heater = new Heater();
+            var ecs = new ECS(28,sensor,heater);
 
             ecs.Regulate();
 
