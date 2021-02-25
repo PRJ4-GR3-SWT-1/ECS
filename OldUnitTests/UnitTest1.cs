@@ -4,7 +4,7 @@ namespace ECS_ny_unit_test
 {
     public partial class Tests
     {
-        private ECS uut;
+      /*  private ECS uut;
         private FakeSensor sensor;
         private FakeHeater heater;
         [SetUp]
@@ -82,6 +82,6 @@ namespace ECS_ny_unit_test
         }
 
 
-
+        */
     }
 }
