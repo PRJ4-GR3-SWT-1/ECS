@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 namespace ECS_ny_unit_test
 {
+    // Dette er en meget vigtig kommentar
     public partial class Tests
     {
         private ECS uut;
